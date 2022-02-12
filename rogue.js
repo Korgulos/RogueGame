@@ -55,7 +55,7 @@ buttons.forEach((btn) => {
     const rows = skilRows();
     rows.forEach((e, f) => {
       if (f == btn.textContent) {
-        console.log(f + " - " + e);
+        //console.log(f + " - " + e);
         melee(f);
       }
     });
