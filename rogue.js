@@ -11,9 +11,9 @@ let rogue = {
 
 let attacker = {
   health: 70,
-  shielding:70,
-  damage:35,
-  actionPoints:12,
+  shielding: 70,
+  damage: 35,
+  actionPoints: 12,
 };
 const skils = {
   f: 1.2,
@@ -51,7 +51,7 @@ function skilRows() {
 
 rogueCl.innerHTML = skilsIterator();
 const buttons = document.querySelectorAll(".btn");
-console.log(buttons);
+//console.log(buttons);
 buttons.forEach((btn) => {
   //console.log(btn.textContent);
   btn.addEventListener("click", () => {
@@ -60,7 +60,7 @@ buttons.forEach((btn) => {
       if (f == btn.textContent) {
         //console.log(f + " - " + e);
         melee(f);
-        marksman(f)
+        marksman(f);
       }
     });
   });
@@ -72,38 +72,39 @@ function melee(f) {
       rogue.strength * skils[rogue.melee] + skils[rogue.weaponsMaster];
     attacker.shielding -= clkulus;
     if (attacker.shielding <= 0) {
-        attacker.health -= clkulus;
-        if (attacker.health <=0){
-            attackerCl.innerHTML = `<h4>DEAD</h4>`;
-        }else{
-            attackerCl.innerHTML = `<h4>0</h4><h4>${attacker.health}</h4>`;
-        }
-      
+      attacker.health -= clkulus;
+      if (attacker.health <= 0) {
+        attackerCl.innerHTML = `<h4>DEAD</h4>`;
+      } else {
+        attackerCl.innerHTML = `<h4>0</h4><h4>${attacker.health}</h4>`;
+      }
     } else {
-      attackerCl.innerHTML = `<h4>${attacker.shielding }</h4><h4>${attacker.health}</h4>`;
+      attackerCl.innerHTML = `<h4>${attacker.shielding}</h4><h4>${attacker.health}</h4>`;
     }
   }
 }
 
 function marksman(f) {
-    if (f == "marksman") {
-      let clkulus =
-        rogue.dexterity + (attacker.shielding/(attacker.shielding /skils[rogue.marksman])) + skils[rogue.weaponsMaster];
-      attacker.health -= clkulus;
-      if (attacker.health <= 0) {
-        attackerCl.innerHTML = `<h4>DEAD</h4>`;
-      } else {
-        attackerCl.innerHTML = `<h4>${attacker.shielding}</h4><h4>${attacker.health}</h4>`;
-      }
+  if (f == "marksman") {
+    let clkulus =
+      rogue.dexterity +
+      attacker.shielding / (attacker.shielding / skils[rogue.marksman]) +
+      skils[rogue.weaponsMaster];
+    attacker.health -= clkulus;
+    if (attacker.health <= 0) {
+      attackerCl.innerHTML = `<h4>DEAD</h4>`;
+    } else {
+      attackerCl.innerHTML = `<h4>${attacker.shielding}</h4><h4>${attacker.health}</h4>`;
     }
   }
-
-function rogueHealth(){
-    let hl = rogue.constitution*skils[rogue.defense]*skils[rogue.defense];
-    return (hl)
 }
 
-function rogueShielding (){
-    let sl = rogue.dexterity*skils[rogue.athletics]*skils[rogue.athletics];
-    return (sl)
+function rogueHealth() {
+  let hl = rogue.constitution * skils[rogue.defense] * skils[rogue.defense];
+  return hl;
+}
+
+function rogueShielding() {
+  let sl = rogue.dexterity * skils[rogue.athletics] * skils[rogue.athletics];
+  return sl;
 }
