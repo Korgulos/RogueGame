@@ -49,28 +49,15 @@ function skilRows() {
   ]);
 }
 
-rogueCl.innerHTML = skilsIterator();
-const buttons = document.querySelectorAll(".btn");
-//console.log(buttons);
-buttons.forEach((btn) => {
-  //console.log(btn.textContent);
-  btn.addEventListener("click", () => {
-    const rows = skilRows();
-    rows.forEach((e, f) => {
-      if (f == btn.textContent) {
-        //console.log(f + " - " + e);
-        melee(f);
-        marksman(f);
-      }
-    });
-  });
-});
-
 function melee(f) {
   if (f == "melee") {
     let clkulus =
       rogue.strength * skils[rogue.melee] + skils[rogue.weaponsMaster];
     attacker.shielding -= clkulus;
+    if (attacker.health <= 0) {
+      attackerCl.innerHTML = `<h4>DEAD</h4>`;
+      attacker.shielding = 0;
+    }
     if (attacker.shielding <= 0) {
       attacker.health -= clkulus;
       if (attacker.health <= 0) {
@@ -108,3 +95,22 @@ function rogueShielding() {
   let sl = rogue.dexterity * skils[rogue.athletics] * skils[rogue.athletics];
   return sl;
 }
+
+//starting game stats
+
+attackerCl.innerHTML = `<h4>${attacker.shielding}</h4><h4>${attacker.health}</h4>`;
+rogueCl.innerHTML = skilsIterator();
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach((btn) => {
+  //console.log(btn.textContent);
+  btn.addEventListener("click", () => {
+    const rows = skilRows();
+    rows.forEach((e, f) => {
+      if (f == btn.textContent) {
+        //console.log(f + " - " + e);
+        melee(f);
+        marksman(f);
+      }
+    });
+  });
+});

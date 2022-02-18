@@ -1,8 +1,46 @@
 * {
   box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center
+}
+header{
+  display: flex;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: rgb(88, 163, 207);
+  background: linear-gradient(135deg,rgb(6, 14, 19),rgb(22, 45, 61));
+}
+h1{
+  color: rgb(88, 163, 207);
+  padding: 0px 25px;
+  text-shadow: 2px 3px 35px rgb(0, 162, 255);
+}
+ul{
+  display: flex;
+}
+.header-link{
+  list-style: none;
+  color: rgb(88, 163, 207);
+  padding: 0px 20px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bolder;
+  border-style: solid;
+  text-shadow: 1px 2px 15px rgb(0, 162, 255);
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: rgba(88, 163, 207, 0);
+
+}
+.href-a:hover{
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: rgb(88, 163, 207);
 }
 
-h4{
+h4 {
   font-size: 20px;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.5);
@@ -20,50 +58,61 @@ body {
   display: table;
   clear: both;
 }
+header{
+
+}
+#grid {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: space-around;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: rgb(88, 163, 207);
+  background: linear-gradient(180deg,rgb(6, 14, 19),rgb(22, 45, 61));
+}
+
 .rogue {
   background-image: url("imagis/rogue01.png");
   background-position: center;
-  background-color: rgb(109, 109, 109);
+  background-size: cover;
+  background-color: rgb(44, 44, 44);
   background-repeat: no-repeat;
-  border-style: solid;
   height: 750px;
-  width: 38%;
-  border-width: 10px 10px;
-  border-color: rgba(0, 0, 0, 0.9);
-  margin-top: 50px;
-  margin-bottom: 100px;
-  margin-right: 30px;
-  margin-left: 30px;
+  width: auto;
   float: left;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: rgb(88, 163, 207);
 }
 
 .attacker {
   background-image: url("imagis/rogue04.png");
   background-position: center;
-  background-color: rgb(109, 109, 109);
+  background-size: cover;
+  background-color: rgb(44, 44, 44);
   background-repeat: no-repeat;
-  border-style: solid;
   height: 750px;
-  width: 40%;
-  border-width: 10px 10px;
-  border-color: rgba(0, 0, 0, 0.9);
-  margin-top: 50px;
-  margin-bottom: 100px;
-  margin-right: 30px;
-  margin-left: 30px;
+  width: auto;
   float: right;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: rgb(88, 163, 207);
 }
 
 .btn {
   background-color: rgba(221, 215, 215, 0);
   border: none;
-  color: rgba(92, 92, 92, 0.750);
+  color: rgba(92, 92, 92, 0.75);
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
   margin: 4px 2px;
+  border-radius: 5px;
   transition-duration: 0.4s;
   cursor: pointer;
   display: block;
