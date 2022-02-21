@@ -1,25 +1,29 @@
 * {
   box-sizing: border-box;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
 }
-header{
+
+header {
   display: flex;
   border-style: solid;
   border-width: 5px;
   border-radius: 25px;
   border-color: rgb(88, 163, 207);
-  background: linear-gradient(135deg,rgb(6, 14, 19),rgb(22, 45, 61));
+  background: linear-gradient(135deg, rgb(6, 14, 19), rgb(22, 45, 61));
 }
-h1{
+
+h1 {
   color: rgb(88, 163, 207);
   padding: 0px 25px;
   text-shadow: 2px 3px 35px rgb(0, 162, 255);
 }
-ul{
+
+ul {
   display: flex;
 }
-.header-link{
+
+.header-link {
   list-style: none;
   color: rgb(88, 163, 207);
   padding: 0px 20px;
@@ -31,9 +35,9 @@ ul{
   border-width: 5px;
   border-radius: 25px;
   border-color: rgba(88, 163, 207, 0);
-
 }
-.href-a:hover{
+
+.href-a:hover {
   border-style: solid;
   border-width: 5px;
   border-radius: 25px;
@@ -43,11 +47,13 @@ ul{
 h4 {
   font-size: 20px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(88, 163, 207, 0.5);
   margin-top: 30px;
   margin-bottom: 10px;
   margin-right: 30px;
   margin-left: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px;
 }
 body {
   background-color: rgb(2, 2, 8);
@@ -58,9 +64,8 @@ body {
   display: table;
   clear: both;
 }
-header{
 
-}
+
 #grid {
   display: grid;
   grid-template-columns: 40% 40%;
@@ -69,7 +74,7 @@ header{
   border-width: 5px;
   border-radius: 25px;
   border-color: rgb(88, 163, 207);
-  background: linear-gradient(180deg,rgb(6, 14, 19),rgb(22, 45, 61));
+  background: linear-gradient(180deg, rgb(6, 14, 19), rgb(22, 45, 61));
 }
 
 .rogue {
@@ -105,7 +110,10 @@ header{
 .btn {
   background-color: rgba(221, 215, 215, 0);
   border: none;
-  color: rgba(92, 92, 92, 0.75);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgba(88, 163, 207, 1);
+  text-shadow: 3px 3px 5px rgb(1, 16, 24);
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -119,5 +127,4 @@ header{
 }
 .btn:hover {
   background-color: #272727;
-  color: white;
 }
