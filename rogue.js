@@ -30,6 +30,7 @@ const rogueCl = document.querySelector(".rogue");
 const attackerCl = document.querySelector(".attacker");
 
 let healthNow = rogueHealth();
+let shieldingNow = rogueShielding();
 
 //skil iterator for html
 function skilRows() {
@@ -44,7 +45,8 @@ function skilRows() {
 //load buttons on rogue div
 function skilsIterator() {
   const rows = skilRows();
-  let row = `<h4>Shild: ${rogueShielding()}</h4><h4 id="rogue-health" style="background-color: rgba(212, 16, 16, 0.5);">Health: ${healthNow}</h4>`;
+  let row = `<h4 id="rogue-shielding">Shild: ${shieldingNow}</h4>
+  <h4 id="rogue-health" style="background-color: rgba(212, 16, 16, 0.5);">Health: ${healthNow}</h4>`;
   rows.forEach((e, f) => {
     row += `<button class="btn">${f}</button>`;
     //console.log(e + f);
@@ -52,11 +54,16 @@ function skilsIterator() {
   return row;
 }
 //for checking defense subtracks rogue health
-function weaponsMaster(f){
-  const bang = 20;
-  healthNow-=bang;
-  const rogueHealthHtml = document.getElementById("rogue-health");
-  rogueHealthHtml.innerHTML =`Health: ${healthNow}`;
+function weaponsMaster(f) {
+  if (f == "weaponsMaster") {
+    const bang = 20;
+    healthNow -= bang;
+    shieldingNow -= bang;
+    const rogueHealthHtml = document.getElementById("rogue-health");
+    rogueHealthHtml.innerHTML = `Health: ${healthNow}`;
+    const rogueShieldingHtml = document.getElementById("rogue-shielding");
+    rogueShieldingHtml.innerHTML = `Shild: ${shieldingNow}`;
+  }
 }
 //button function for melee
 function melee(f) {
@@ -102,22 +109,41 @@ function marksman(f) {
   }
 }
 //restore health on rogue
-function defense(f){
-  if(f=="defense"){
+function defense(f) {
+  if (f == "defense") {
     const rogueHealthHtml = document.getElementById("rogue-health");
     console.log(f);
     let clkulus =
-      ((rogue.strength * rogue.constitution * skils[rogue.defense]) /
-      10)* skils[rogue.defense];
-    
-    if (healthNow<rogueHealth()){
-      if ((clkulus + healthNow)>=rogueHealth()){
-        healthNow=rogueHealth();
-      }else{
-        healthNow+=clkulus;
+      ((rogue.strength * rogue.constitution * skils[rogue.defense]) / 10) *
+      skils[rogue.defense];
+
+    if (healthNow < rogueHealth()) {
+      if (clkulus + healthNow >= rogueHealth()) {
+        healthNow = rogueHealth();
+      } else {
+        healthNow += clkulus;
       }
     }
-    rogueHealthHtml.innerHTML =`Health: ${healthNow}`;
+    rogueHealthHtml.innerHTML = `Health: ${healthNow}`;
+  }
+}
+
+function athletics(f) {
+  if (f == "athletics") {
+    const rogueshieldingHtml = document.getElementById("rogue-shielding");
+    console.log(f);
+    let clkulus =
+      ((rogue.dexterity * rogue.constitution * skils[rogue.athletics]) / 10) *
+      skils[rogue.athletics];
+
+    if (shieldingNow < rogueShielding()) {
+      if (clkulus + shieldingNow >= rogueShielding()) {
+        shieldingNow = rogueShielding();
+      } else {
+        shieldingNow += clkulus;
+      }
+    }
+    rogueshieldingHtml.innerHTML = `Shild: ${shieldingNow}`;
   }
 }
 //seat rogue health in div
@@ -133,7 +159,6 @@ function rogueShielding() {
 
 //starting game stats
 
-
 attackerCl.innerHTML = `<h4>Shild: ${attacker.shielding}</h4><h4 style="background-color: rgba(212, 16, 16, 0.5);">Health: ${attacker.health}</h4>`;
 rogueCl.innerHTML = skilsIterator();
 const buttons = document.querySelectorAll(".btn");
@@ -147,7 +172,8 @@ buttons.forEach((btn) => {
         melee(f);
         marksman(f);
         defense(f);
-        weaponsMaster(f)
+        athletics(f);
+        weaponsMaster(f);
       }
     });
   });
